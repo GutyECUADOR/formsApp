@@ -1,0 +1,68 @@
+<h4>Formularios <small>template</small></h4>
+<hr>
+
+<form (ngSubmit)="submitForm(refForm)" #refForm="ngForm">
+  <div class="form-group">
+    <label>Nombre: </label>
+    <input type="text" class="form-control" name="txtNombre"
+      #txtNombre = "ngModel"
+      [(ngModel)]="this.usuario.nombre"
+      [ngClass]="{'is-valid': txtNombre.valid, 'is-invalid': !txtNombre.valid && txtNombre.touched}" 
+      minlength="3"
+      placeholder="Ingrese su nombre"
+      required>
+    
+      <div class="valid-feedback">
+        <font style="vertical-align: inherit;">
+          <font style="vertical-align: inherit;">
+            Es correcto.
+          </font>
+        </font>
+      </div>
+      
+      <div class="invalid-feedback">
+        <font style="vertical-align: inherit;">
+          <font style="vertical-align: inherit;">
+            Por favor, proporcione un nombre válido de al menos 3 caracteres.
+          </font>
+        </font>
+      </div>
+  </div>
+
+  <div class="form-group">
+    <label>Apellido: </label>
+    <input type="text" class="form-control" name="txtApellido"
+      [(ngModel)]="this.usuario.apellido"
+      required
+      >
+  </div>
+
+  <div class="form-group">
+    <label>Email: </label>
+    <input type="email" class="form-control" name="txtEmail"
+      #txtEmail = "ngModel"
+      [ngClass]="{'is-valid': txtEmail.valid, 'is-invalid': !txtEmail.valid && txtEmail.touched}" 
+      [(ngModel)]="this.usuario.correo"
+      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+      required>
+    
+    <div class="valid-feedback">
+      <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">
+          Es correcto.
+        </font>
+      </font>
+    </div>
+
+    <div class="invalid-feedback">
+      <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">
+          Por favor, proporcione un correo válido.
+        </font>
+      </font>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Guardar</button>
+ 
+</form>
