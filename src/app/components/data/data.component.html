@@ -1,3 +1,82 @@
-<p>
-  data works!
-</p>
+<h4>Formularios <small>template</small></h4>
+<hr>
+
+
+
+<form [formGroup]="formulario" (ngSubmit)="saveData()">
+ 
+  
+
+  <div formGroupName="nombreCompleto">
+    <div class="form-group">
+      <label>Nombre: </label>
+      <input type="text" 
+        [ngClass]="{'is-valid': formulario.get('nombreCompleto.nombre').valid, 'is-invalid': !formulario.get('nombreCompleto.nombre').valid && formulario.get('nombreCompleto.nombre').touched}"
+        formControlName="nombre" 
+        class="form-control" 
+        placeholder="Ingrese su nombre">
+      
+      <div class="valid-feedback">
+        <font style="vertical-align: inherit;">
+          <font style="vertical-align: inherit;">
+            Es correcto.
+          </font>
+        </font>
+      </div>
+    
+      <div class="invalid-feedback">
+        <font style="vertical-align: inherit;">
+          <font style="vertical-align: inherit;">
+            Por favor, proporcione un dato válido de al menos 3 caracteres.
+          </font>
+        </font>
+      </div>
+    
+    </div>
+    
+  
+    <div class="form-group">
+      <label>Apellido: </label>
+      <input type="text"
+        [ngClass]="{'is-valid': formulario.get('nombreCompleto.apellido').valid, 'is-invalid': !formulario.get('nombreCompleto.apellido').valid && formulario.get('nombreCompleto.apellido').touched}" 
+        formControlName="apellido" 
+        class="form-control">
+    
+      <div class="valid-feedback">
+        <font style="vertical-align: inherit;">
+          <font style="vertical-align: inherit;">
+            Es correcto.
+          </font>
+        </font>
+      </div>
+    
+      <div class="invalid-feedback">
+        <font style="vertical-align: inherit;">
+          <font style="vertical-align: inherit;">
+            Por favor, proporcione un dato válido de al menos 3 caracteres.
+          </font>
+        </font>
+      </div>
+    </div>
+  </div>
+  
+
+  <div class="form-group">
+    <label>Correo: </label>
+    <input type="mail" formControlName="correo" class="form-control">
+  </div>
+
+  <div class="form-group" formArrayName="items">
+    <label>Items: </label>
+    <input *ngFor="let item of formulario.controls['items'].controls; let indice = index" 
+      [formControlName]="indice"
+      type="text" 
+      class="form-control">
+  </div>
+
+  <button type="button" (click)="addNewItem()" class="btn btn-primary">Agregar</button>
+
+  <button type="submit" class="btn btn-primary">Guardar</button>
+  <button type="button" (click)="loadingData()" class="btn btn-success">Cargar Informacion</button>
+  <button type="button" (click)="resetForm()" class="btn btn-warning">Nuevo</button>
+</form>

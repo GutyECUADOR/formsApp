@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -12,7 +12,40 @@ export class TemplateComponent {
     nombre: '',
     apellido: '',
     correo: '',
+    pais: 'ECU',
+    sexo: '',
+    aceptaTerminos: false
   };
+
+  public paises = [
+    {
+      codigo: 'ECU',
+      nombre: 'Ecuador'
+    },
+    {
+      codigo: 'PER',
+      nombre: 'Peru'
+    },
+    {
+      codigo: 'COL',
+      nombre: 'Colombia'
+    }
+  ];
+
+  public sexos = [
+    {
+      codigo: 'H',
+      nombre: 'Hombre'
+    },
+    {
+      codigo: 'M',
+      nombre: 'Mujer'
+    },
+    {
+      codigo: 'SN',
+      nombre: 'Sin Definir'
+    }
+  ];
 
   constructor() { }
 
