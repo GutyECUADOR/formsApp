@@ -1,12 +1,11 @@
 <h4>Formularios <small>template</small></h4>
 <hr>
 
-
+Validacion : {{ formulario.valid }}
+Status: {{ formulario.status }}
 
 <form [formGroup]="formulario" (ngSubmit)="saveData()">
  
-  
-
   <div formGroupName="nombreCompleto">
     <div class="form-group">
       <label>Nombre: </label>
@@ -64,6 +63,21 @@
   <div class="form-group">
     <label>Correo: </label>
     <input type="mail" formControlName="correo" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label>NickName: </label>
+    <input type="text" formControlName="nickName" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label>Contraseña: </label>
+    <input type="password" formControlName="password" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label>Confirme Contraseña: </label>
+    <input type="password" formControlName="confirmPassword" class="form-control">
   </div>
 
   <div class="form-group" formArrayName="items">
